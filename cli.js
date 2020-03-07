@@ -1,5 +1,5 @@
 const program = require('commander');
-
+const api = require('./index.js')
 // 设置它的选项
 program
 .option('-x, --xxx', 'what the x')
@@ -9,8 +9,9 @@ program
   .command('add <taskName>')
   .description('add a task')
   .action((firstArg,info) => {
-      let args = info.parent.args;
-      console.log(args);
+      let words = info.parent.args;
+      console.log(words);
+      api.add(words);
   });
 
 program
