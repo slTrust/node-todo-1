@@ -10,8 +10,8 @@ program
   .description('add a task')
   .action((firstArg,info) => {
       let words = info.parent.args;
-      console.log(words);
-      api.add(words);
+      console.log(words[0]);
+      api.add(words[0]);
   });
 
 program
