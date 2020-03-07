@@ -10,17 +10,23 @@ program
   .description('add a task')
   .action((firstArg,info) => {
       let words = info.parent.args;
-      console.log(words[0]);
-      api.add(words[0]);
+      api.add(words[0]).then(()=>{console.log("添加成功")},()=>{console.log("添加失败")})
   });
 
 program
   .command('clear')
   .description('clear all tasks')
   .action(() => {
-      console.log('this is clear');
+      api.clear().then(()=>{console.log("清除完毕")},()=>{console.log("清除失败")})
   });
 
 
 program.parse(process.argv);
 
+// 用户实际输入的 命令参数
+// console.log(process.argv)
+
+if(process.argv.length === 2){
+  // 说明用户直接运行 node cli.js
+  api.showAll()
+}
