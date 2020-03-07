@@ -1,6 +1,10 @@
+#!/usr/bin/env node 
 const program = require('commander');
 const api = require('./index.js')
+const pkg = require('./package.json')
 // 设置它的选项
+program
+.version(pkg.version)
 program
 .option('-x, --xxx', 'what the x')
 
